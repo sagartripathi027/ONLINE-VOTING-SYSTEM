@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Voting System - Democracy Reimagined</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- SIGNUP PAGE (Default Landing) -->
+        <div id="signupPage" class="page">
+            <div class="logo">
+                <div class="logo-icon">🗳️</div>
+                <h1>Join Democracy</h1>
+                <p class="subtitle">Create your secure voting account</p>
+            </div>
+
+            <form id="signupForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="signupName" placeholder="Enter your full name" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                        <span class="input-icon">✉️</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Voter ID Number <small style="font-weight:400; font-size:12px; opacity:0.85;">(optional)</small></label>
+                    <div class="input-wrapper">
+                        <input type="text" id="signupVoterId" placeholder="Enter your Voter ID (optional)">
+                        <span class="input-icon">🆔</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="signupPassword" placeholder="Create a secure password" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                </div>
+
+                <div id="signupError" class="error"></div>
+
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                <button type="button" class="btn btn-secondary" onclick="showPage('loginPage')">
+                    Already have an account?
+                </button>
+            </form>
+        </div>
+
+        <!-- LOGIN PAGE -->
+        <div id="loginPage" class="page active">
+            <div class="logo">
+                <div class="logo-icon">🔐</div>
+                <h1>Welcome Back</h1>
+                <p class="subtitle">Sign in to cast your vote</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                        <span class="input-icon">✉️</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                </div>
+
+                <div id="loginError" class="error"></div>
+
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="button" class="btn btn-secondary" onclick="showPage('signupPage')">
+                    Create New Account
+                </button>
+            </form>
+        </div>
+
+        <!-- VOTING PAGE -->
+        <div id="votingPage" class="page">
+            <h2>Cast Your Vote</h2>
+            <p class="subtitle">Select your preferred candidate carefully</p>
+
+            <div class="candidates-grid">
+                <label class="candidate-card" for="candidate1">
+                    <div class="candidate-content">
+                        <div class="radio-wrapper">
+                            <input type="radio" name="candidate" id="candidate1" value="1" onchange="selectCandidate(1)">
+                        </div>
+                        <div class="candidate-symbol">🌟</div>
+                        <div class="candidate-info">
+                            <div class="candidate-header">
+                                <h3>👨‍💼 Nakul Narang</h3>
+                                <button type="button" class="info-btn" onclick="showCandidateInfo(event, 1)">ℹ️</button>
+                            </div>
+                            <p>Education, healthcare reform, and gender equality initiatives</p>
+                            <span class="party-badge">Independent Party</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="candidate-card" for="candidate2">
+                    <div class="candidate-content">
+                        <div class="radio-wrapper">
+                            <input type="radio" name="candidate" id="candidate2" value="2" onchange="selectCandidate(2)">
+                        </div>
+                        <div class="candidate-symbol">🌱</div>
+                        <div class="candidate-info">
+                            <div class="candidate-header">
+                                <h3>👩‍💼 Shristy Suhane</h3>
+                                <button type="button" class="info-btn" onclick="showCandidateInfo(event, 2)">ℹ️</button>
+                            </div>
+                            <p>Environmental protection and sustainable development</p>
+                            <span class="party-badge">Progressive Alliance</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="candidate-card" for="candidate3">
+                    <div class="candidate-content">
+                        <div class="radio-wrapper">
+                            <input type="radio" name="candidate" id="candidate3" value="3" onchange="selectCandidate(3)">
+                        </div>
+                        <div class="candidate-symbol">💼</div>
+                        <div class="candidate-info">
+                            <div class="candidate-header">
+                                <h3>👨‍💼 Richa Singh</h3>
+                                <button type="button" class="info-btn" onclick="showCandidateInfo(event, 3)">ℹ️</button>
+                            </div>
+                            <p>Economic development and job creation</p>
+                            <span class="party-badge">Democratic Party</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="candidate-card" for="candidate4">
+                    <div class="candidate-content">
+                        <div class="radio-wrapper">
+                            <input type="radio" name="candidate" id="candidate4" value="4" onchange="selectCandidate(4)">
+                        </div>
+                        <div class="candidate-symbol">🛡️</div>
+                        <div class="candidate-info">
+                            <div class="candidate-header">
+                                <h3>👩‍💼 Palak Vishwakarma</h3>
+                                <button type="button" class="info-btn" onclick="showCandidateInfo(event, 4)">ℹ️</button>
+                            </div>
+                            <p>Infrastructure modernization and national security</p>
+                            <span class="party-badge">Republican Party</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+            <button class="btn btn-primary" onclick="submitVote()">Submit Vote</button>
+            <button class="btn btn-secondary" onclick="logout()">Sign Out</button>
+        </div>
+
+        <!-- SUCCESS PAGE -->
+        <div id="successPage" class="page">
+            <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h2>Vote Submitted Successfully!</h2>
+                <p>Thank you for participating in the democratic process. Your vote has been recorded securely.</p>
+                <button class="btn btn-primary" onclick="showPage('signupPage')">Return Home</button>
+            </div>
+        </div>
+    </div>
+    <!-- ADMIN LOGIN PAGE -->
+        <div id="adminLoginPage" class="page">
+            <div class="logo">
+                <div class="logo-icon">🔑</div>
+                <h1>Admin Portal</h1>
+                <p class="subtitle">Secure administrative access</p>
+            </div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label>Admin Username</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="adminUsername" placeholder="Enter admin username" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Admin Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                        <span class="input-icon">🔐</span>
+                    </div>
+                </div>
+                <div id="adminLoginError" class="error"></div>
+                <button type="submit" class="btn btn-primary">Access Dashboard</button>
+                <button type="button" class="btn btn-secondary" onclick="showPage('loginPage')">Back to Voter Login</button>
+            </form>
+            <div style="text-align:center;margin-top:20px;font-size:12px;color:var(--text-secondary);">
+                Demo credentials: sagar / sagar123
+            </div>
+        </div>
+
+        <!-- ADMIN DASHBOARD PAGE -->
+        <div id="adminDashboard" class="page">
+            <div class="admin-header">
+                <div>
+                    <h2 style="text-align:left;margin-bottom:2px;">🎯 Admin Dashboard</h2>
+                    <p style="font-size:12px;color:var(--text-secondary);">Live Election Results</p>
+                </div>
+                <button class="btn btn-secondary" onclick="adminLogout()" style="width:auto;padding:10px 18px;font-size:13px;">Sign Out</button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🗳️</div>
+                    <div class="stat-value" id="totalVotes">0</div>
+                    <div class="stat-label">Total Votes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value" id="totalVoters">0</div>
+                    <div class="stat-label">Registered Voters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="turnoutRate">0%</div>
+                    <div class="stat-label">Turnout Rate</div>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">📊 Votes by Candidate</div>
+                <div class="bar-chart" id="barChart">
+                    <div class="chart-empty">No votes yet</div>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">🥧 Vote Share by Party</div>
+                <div class="pie-section">
+                    <canvas id="pieChart" width="200" height="200"></canvas>
+                    <div class="pie-legend" id="pieLegend"></div>
+                </div>
+            </div>
+            <button class="btn btn-secondary" onclick="showPage('loginPage')" style="margin-top:8px;">← Back to Voter Login</button>
+        </div>
+    </div>
+    <!-- Admin Access Link -->
+    <div class="admin-link">
+        <button onclick="showPage('adminLoginPage')" title="Admin Access">🔑 Admin</button>
+    </div>
+
+    <script src="js/script.js"></script
+</body>
+</html>
