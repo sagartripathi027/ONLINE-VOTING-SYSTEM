@@ -30,7 +30,7 @@ def _parse_dt(s):
         return None
 
 
-# ── Election CRUD ─────────────────────────────────────────────────────────────
+# Election CRUD
 
 @elections_bp.route('/', methods=['GET'])
 def list_elections():
@@ -125,7 +125,7 @@ def delete_election(election_id):
     return jsonify({'message': 'Election deleted'}), 200
 
 
-# ── Candidate Management ──────────────────────────────────────────────────────
+# Candidate Management
 
 @elections_bp.route('/<int:election_id>/candidates', methods=['POST'])
 @admin_required
@@ -159,7 +159,7 @@ def remove_candidate(election_id, candidate_id):
     return jsonify({'message': 'Candidate removed'}), 200
 
 
-# ── Voter: check if already voted ─────────────────────────────────────────────
+# Voter: check if already voted
 
 @elections_bp.route('/<int:election_id>/my-vote', methods=['GET'])
 @voter_required
