@@ -1,9 +1,9 @@
-// ==================== STATE MANAGEMENT ====================
+// STATE MANAGEMENT
 let selectedCandidateId = null;
 let isAuthenticated = false;
 let isSubmitting = false;
 
-// ==================== CANDIDATE DATA ====================
+// CANDIDATE DATA
 const candidatesData = {
     1: {
         name: "Nakul Narang",
@@ -81,7 +81,7 @@ const CHART_COLORS = {
 // In-memory vote store  { candidateId: count }
 const voteStore = {};
 
-// ==================== PAGE NAVIGATION ====================
+// PAGE NAVIGATION
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
@@ -93,7 +93,7 @@ function showPage(pageId) {
     }
 }
 
-// ==================== ERROR HANDLING ====================
+// ERROR HANDLING 
 function clearErrors() {
     document.querySelectorAll('.error').forEach(error => {
         error.classList.remove('show');
@@ -109,7 +109,7 @@ function showError(elementId, message) {
     }
 }
 
-// ==================== SIGNUP ====================
+// SIGNUP
 document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     if (isSubmitting) return;
@@ -165,7 +165,7 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     }, 800);
 });
 
-// ==================== LOGIN ====================
+// LOGIN
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     if (isSubmitting) return;
@@ -212,7 +212,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     }, 800);
 });
 
-// ==================== CANDIDATE SELECTION ====================
+// CANDIDATE SELECTION
 function selectCandidate(candidateId) {
     document.querySelectorAll('.candidate-card').forEach(card => {
         card.classList.remove('selected');
@@ -238,7 +238,7 @@ function resetCandidateSelection() {
     selectedCandidateId = null;
 }
 
-// ==================== CANDIDATE INFO MODAL ====================
+// CANDIDATE INFO MODAL
 function showCandidateInfo(event, candidateId) {
     event.preventDefault();
     event.stopPropagation();
@@ -313,7 +313,7 @@ function showCandidateInfo(event, candidateId) {
     document.body.appendChild(backdrop);
 }
 
-// ==================== VOTE SUBMISSION ====================
+// VOTE SUBMISSION
 async function submitVote() {
     if (!selectedCandidateId) {
         showCustomAlert('⚠️ Please Select a Candidate', 'You must select a candidate before submitting your vote.');
