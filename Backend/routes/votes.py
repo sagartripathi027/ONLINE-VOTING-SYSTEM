@@ -55,7 +55,7 @@ def cast_vote():
         db.session.rollback()
         return jsonify({'error': 'You have already voted in this election'}), 409
 
-    # ── Real-time broadcast via SocketIO ──────────────────────────────────────
+    # Real-time broadcast via SocketIO
     results = _build_results(election)
     socketio.emit('vote_update', {
         'election_id': election_id,
