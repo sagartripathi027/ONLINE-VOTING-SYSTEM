@@ -11,7 +11,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    # ── Security ──────────────────────────────────────────────────────────────
+    # Security
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-super-secret-change-in-prod-xyz')
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-key-change-in-prod')
     JWT_ACCESS_TOKEN_EXPIRES  = timedelta(hours=1)
@@ -19,13 +19,13 @@ class Config:
     JWT_BLACKLIST_ENABLED = True
     JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
 
-    # ── Database ──────────────────────────────────────────────────────────────
+    # Database
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL',
         f"sqlite:///{os.path.join(BASE_DIR, 'voting.db')}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # ── App ───────────────────────────────────────────────────────────────────
+    # App
     DEBUG = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
     TESTING = False
